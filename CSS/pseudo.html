@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        a{
+            color: black;
+            font-size: 40px;
+        }
+        a:hover{
+            color: red;
+        }
+        a:active{
+            color: green;
+        }
+        a:visited{
+            color: blue;
+        }
+        li:nth-child(even){
+            color: gold;
+        }
+        li:nth-child(3n){
+            color: red;
+        }
+        h1{
+            font-size: 20px;
+            color: black;
+        }
+        h1::before{
+            content:"⭐";
+            color: gold;
+        }
+        h1::after{
+            content:"⭐";
+            color: gold;
+        }
+        p{
+            font-size: 30px;
+            color: red;
+        }
+        p::first-letter{
+            color: aquamarine;
+        }
+        p::first-line{
+            color:gold;
+        }
+        ::selection{
+            background-color: grey;
+        }
+        .simple shadow{
+            border: 10px;
+            box-shadow: 5px 5px 10px  rgb(0, 0, 0,5);
+        }
+    </style>
+</head>
+<body>
+    <a href="www.google.com">Google Website</a>
+    <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+        <li>Item 5</li>
+        <li>Item 6</li>
+    </ul>
+
+    <h1>Welcome to My Website</h1>
+    <p>Hello Good Morning <br>
+       Iam going to college
+       Iam a student 
+
+    </p>
+
+    <div class="simple shadow">Simple Shadow</div>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .gradient-box{
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(45deg, greenyellow, red, blue);
+        }
+
+        .element{
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, greenyellow, red, blue);
+        }
+
+        .sum{
+            width: 300px;
+            height: 300px;
+            background: conic-gradient(greenyellow, red, blue);
+        }
+
+        .function{
+            width: 300px;
+            height: 200px;
+            background-color: darkorange;
+            border: 5px solid green;
+            transition: background-color 5s ease, border-radius 5s ease;
+            
+        }
+
+        .function:hover{
+            background-color: cyan;
+        }
+        
+        .box{
+            width: 300px;
+            height: 200px;
+            background-color: rgb(255, 0, 195);
+            border: 5px solid rgb(38, 21, 222);
+            transition: transform 0.5 ease, border-radius 1s ;
+            
+        }
+
+        .box:hover{
+            border-radius: 200px;
+            transform scale(0.5) rotate(45deg) translate(300px,10px);
+        }
+    </style>
+</head>
+<body>
+    <div class="gradient-box"></div><br><br>
+    <div class="element"></div><br><br>
+    <div class="sum"></div><br><br>
+    <div class="function"></div><br><br>
+    <div class="box"></div>
+</body>
+</html>

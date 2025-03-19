@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 200vh;
+            background-color: blanchedalmond;
+        }
+
+        .parent {
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+            position: relative;
+            left: 700px;
+            top: 500px;
+        }
+
+        .parent-box {
+            position: absolute;
+            width: 500px;
+            height: 400px;
+            background-color: lightgray;
+        }
+
+        .child-box {
+            position: relative;
+            top: 10px;
+            left: 10px;
+            background-color: lightgreen;
+            padding: 10px;
+        }
+
+        .sathwik {
+            position: fixed;
+            background-color: lightgoldenrodyellow;
+            top: 100px;
+        }
+
+        .akash {
+            position: sticky;
+            background-color: lightcoral;
+            top: 70px;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">Relative Position</div>
+
+    <div class="parent-box">Parent Element
+        <div class="child-box">Absolute Position</div>
+    </div>
+
+    <div class="sathwik">Sathwik</div>
+
+    <div class="akash">Akash</div>
+</body>
+</html>
