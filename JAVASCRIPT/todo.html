@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styled Todo List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            margin: 40px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        input {
+            padding: 10px;
+            width: 250px;
+            border: 2px solid #555;
+            border-radius: 5px;
+            font-size: 16px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            border-color: #007bff;
+            box-shadow: 0px 0px 8px rgba(0, 123, 255, 0.5);
+        }
+
+        .container {
+            background: white;
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin: 5px;
+            transition: 0.3s;
+        }
+
+        .add {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .add:hover {
+            background-color: #218838;
+        }
+
+        .edit {
+            background-color: #ffc107;
+            color: black;
+        }
+
+        .edit:hover {
+            background-color: #e0a800;
+        }
+
+        .save {
+            background-color: #17a2b8;
+            color: white;
+        }
+
+        .save:hover {
+            background-color: #138496;
+        }
+
+        .delete {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .delete:hover {
+            background-color: #c82333;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #fff;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        li input {
+            width: 60%;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Todo List</h1>
+        <input type="text" id="itemText" placeholder="Enter the item">
+        <button id="itemButton" class="add">Add Item</button>
+
+        <ul id="itemList"></ul>
+    </div>
+
+    <script>
+        let inputEle = document.getElementById("itemText");
+        let buttonEle = document.getElementById("itemButton");
+        let ulEle = document.getElementById("itemList");
+
+        function addItem() {
+            let itemText = inputEle.value.trim();
+            if (itemText !== "") {
+                let liEle = document.createElement("li");
+                
+                let spanEle = document.createElement("span");
+                spanEle.textContent = itemText;
+                liEle.appendChild(spanEle);
+
+                let editButton = document.createElement("button");
+                editButton.textContent = "Edit";
+                editButton.classList.add("edit");
+
+                let saveButton = document.createElement("button");
+                saveButton.textContent = "Save";
+                saveButton.classList.add("save");
+                saveButton.style.display = "none"; 
+
+                let deleteButton = document.createElement("button");
+                deleteButton.textContent = "Delete";
+                deleteButton.classList.add("delete");
+
+                liEle.appendChild(editButton);
+                liEle.appendChild(saveButton);
+                liEle.appendChild(deleteButton);
+                ulEle.appendChild(liEle);
+                
+                inputEle.value = "";
+
+                editButton.addEventListener("click", () => {
+                    let inputField = document.createElement("input");
+                    inputField.type = "text";
+                    inputField.value = spanEle.textContent;
+                    liEle.insertBefore(inputField, spanEle);
+                    liEle.removeChild(spanEle);
+                    editButton.style.display = "none";
+                    saveButton.style.display = "inline";
+
+                    inputField.addEventListener("keydown", (event) => {
+                        if (event.key === "Enter") {
+                            saveEdit(liEle, inputField, spanEle, editButton, saveButton);
+                        }
+                    });
+                });
+
+                saveButton.addEventListener("click", () => {
+                    let inputField = liEle.querySelector("input");
+                    saveEdit(liEle, inputField, spanEle, editButton, saveButton);
+                });
+
+                deleteButton.addEventListener("click", () => {
+                    liEle.remove();
+                });
+            }
+        }
+
+        function saveEdit(liEle, inputField, spanEle, editButton, saveButton) {
+            let updatedText = inputField.value.trim();
+            if (updatedText !== "") {
+                spanEle.textContent = updatedText;
+                liEle.insertBefore(spanEle, inputField);
+                liEle.removeChild(inputField);
+                editButton.style.display = "inline";
+                saveButton.style.display = "none";
+            }
+        }
+
+        buttonEle.addEventListener("click", addItem);
+
+        inputEle.addEventListener("keydown", (event) => {
+            if (event.key === "Enter") {
+                addItem();
+            }
+        });
+    </script>
+</body>
+</html>
